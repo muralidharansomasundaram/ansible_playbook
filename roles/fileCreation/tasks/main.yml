@@ -1,12 +1,17 @@
 ---
 # tasks file for fileCreation
-
-      - name: CHEF_ENV_DETAIL
-       prompt: Kinldy enter the ENV detail
-       private: no
-     - name: ENV_FILES_VALUE
-       prompt: Kindly enter env.rb file value to be replaced in chef cookbook
-       private: no
+     - name: Getting ENV details
+       pause:
+         prompt: "Kinldy enter the ENV detail"
+       register: env_details 
+     - set_fact:
+         CHEF_ENV_DETAIL: "{{ env_details.user_input }}"
+     - name: getting env.rb value
+       pause: 
+         prompt: "Kindly enter env.rb file value to be replaced in chef cookbook"
+       register: rb_details
+     - set_fact: 
+         ENV_FILES_VALUE: "{{ rb_details.user_input }}"
      - name: Create Chef-dev directory
        file:
          path: /{{ CHEF_DIR }}/{{ item }}
