@@ -14,7 +14,7 @@
         state: directory
      - name: Downloading cookbook packge from GIT Repo
        git:
-         repo: {{ COOKBOOK_GIT_LOCATION }}
+         repo: 'https://github.com/muralidharansomasundaram/{{ COOKBOOK_NAME }}.git'
          dest: /{{ CHEF_DIR }}/cookbooks/{{ COOKBOOK_NAME }}
      - name: copying solo.rb and startup.json
        template:
