@@ -1,5 +1,20 @@
 ---
 # vars file for fileCreation
 
+vars_prompt:
+     - name: COOKBOOK_NAME
+       prompt: Kindly enter chef cookbook name
+       private: no
+     - name: COOKBOOK_VERSION
+       prompt: Kindly enter chef cookbook version
+       private: no
+     - name: CHEF_ENV_DETAIL
+       prompt: Kinldy enter the ENV detail
+       private: no
+     - name: ENV_FILES_VALUE
+       prompt: Kindly enter env.rb file value to be replaced in chef cookbook
+       private: no
+
 CHEF_CMD_TO_INVOKE_COOKBOOK: " chef-solo -c /{{ CHEF_DIR }}/solo.rb -j /{{ CHEF_DIR }}/startup.json -E {{ CHEF_ENV_DETAIL }} "
 CHEF_DIR: chef-cookbook-install
+COOKBOOK_GIT_LOCATION: 'https://github.com/muralidharansomasundaram/{{ COOKBOOK_NAME }}.git'
